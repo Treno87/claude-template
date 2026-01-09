@@ -59,7 +59,8 @@ git clone https://github.com/Treno87/claude-template.git $HOME\.claude-template
 │   ├── tidy.md            # 코드 정리 + 커밋
 │   ├── tcr.md             # Test && Commit || Revert
 │   └── verify.md          # 테스트 실행
-├── skills/                # 기술 스택별 가이드 (필요시)
+├── skills/
+│   └── voice-notification/ # 음성 알림 커스텀 스킬
 └── plugins/               # MCP 플러그인 설정 (필요시)
 ```
 
