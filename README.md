@@ -6,8 +6,8 @@
 
 - 🎯 **TDD & Clean Code 가이드라인** 포함
 - 🔒 **권한 설정 템플릿** (settings.json)
-- 🪝 **Pre-commit hook** (Biome 자동 체크)
-- 🔔 **Post-task hook** (작업 완료 알림)
+- 🪝 **Hooks**: Biome 자동 포맷팅, 음성 알림
+- 🛠️ **커스텀 Commands**: /beck, /refactor, /tidy, /tcr, /verify
 - 🖥️ **Windows (PowerShell) + WSL/Linux/Mac** 지원
 
 ## 설치
@@ -16,10 +16,10 @@
 
 ```bash
 # WSL/Linux/Mac
-git clone https://github.com/YOUR_USERNAME/claude-template.git ~/.claude-template
+git clone https://github.com/Treno87/claude-template.git ~/.claude-template
 
 # Windows PowerShell
-git clone https://github.com/YOUR_USERNAME/claude-template.git $HOME\.claude-template
+git clone https://github.com/Treno87/claude-template.git $HOME\.claude-template
 ```
 
 ### 2. 프로젝트에 적용
@@ -47,12 +47,18 @@ git clone https://github.com/YOUR_USERNAME/claude-template.git $HOME\.claude-tem
 ├── CLAUDE.md              # 핵심 프로젝트 가이드라인 (간결하게)
 ├── clean-code.md          # Clean Code 원칙
 ├── tdd.md                 # TDD 가이드라인
-├── settings.json          # Claude 권한 설정
+├── settings.json          # Claude 권한 설정 + Hooks 설정
 ├── settings.local.json    # 로컬 전용 설정 (gitignore)
 ├── hooks/
-│   ├── pre-commit         # Biome lint/format 체크
-│   └── post-task          # 작업 완료 음성 알림
-├── commands/              # 커스텀 슬래시 명령어 (필요시)
+│   ├── biome/
+│   │   └── post-write.ps1 # 파일 저장 시 Biome 자동 포맷팅
+│   └── voice_notifications/ # 작업 완료 음성 알림
+├── commands/
+│   ├── beck.md            # Kent Beck 4원칙 리뷰
+│   ├── refactor.md        # 즉시 리팩토링
+│   ├── tidy.md            # 코드 정리 + 커밋
+│   ├── tcr.md             # Test && Commit || Revert
+│   └── verify.md          # 테스트 실행
 ├── skills/                # 기술 스택별 가이드 (필요시)
 └── plugins/               # MCP 플러그인 설정 (필요시)
 ```

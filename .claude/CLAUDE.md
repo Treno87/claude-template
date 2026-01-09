@@ -18,9 +18,11 @@
 
 ## Commands
 
-- `/review`: 코드 리뷰 요청
-- `/refactor`: 리팩토링 제안
-- `/test`: 테스트 실행
+- `/beck`: Kent Beck의 4원칙으로 코드 리뷰 (제안만)
+- `/refactor`: Kent Beck의 4원칙으로 즉시 리팩토링 실행
+- `/tidy`: 코드 정리 후 즉시 커밋 (기능 변경 없음)
+- `/tcr`: Test && Commit || Revert 실행
+- `/verify`: 테스트 실행 (실패해도 revert 안함)
 
 ## Rules
 

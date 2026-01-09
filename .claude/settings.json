@@ -1,4 +1,39 @@
 {
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -ExecutionPolicy Bypass -File \"$HOME\\.claude\\hooks\\biome\\post-write.ps1\""
+          }
+        ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$HOME\\.claude\\hooks\\voice_notifications\\voice_handler.py\"",
+            "timeout": 10000
+          }
+        ]
+      }
+    ],
+    "Notification": [],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -Command \"Add-Type -AssemblyName System.Speech;(New-Object System.Speech.Synthesis.SpeechSynthesizer).Speak('요청하신 작업이 완료되었습니다.')\""
+          }
+        ]
+      }
+    ]
+  },
   "permissions": {
     "allow": [
       "Read(*)",
@@ -9,11 +44,13 @@
       "Bash(git:*)",
       "Bash(biome:*)",
       "Bash(vitest:*)",
-      "Bash(jest:*)"
+      "Bash(jest:*)",
+      "Bash(npx:*)"
     ],
     "deny": [
       "Write(~/*)",
       "Bash(rm -rf *)"
     ]
-  }
+  },
+  "enabledPlugins": {}
 }
