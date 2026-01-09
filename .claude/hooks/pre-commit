@@ -1,0 +1,28 @@
+#!/bin/bash
+# Pre-commit hook: Biome lint and format check
+
+echo "🔍 Running Biome checks..."
+
+# Check if biome is installed
+if ! command -v npx &> /dev/null; then
+    echo "⚠️  npx not found. Skipping Biome check."
+    exit 0
+fi
+
+# Check if biome.json exists
+if [ ! -f "biome.json" ]; then
+    echo "⚠️  biome.json not found. Skipping Biome check."
+    exit 0
+fi
+
+# Run Biome check on staged files
+npx biome check --staged --no-errors-on-unmatched
+
+if [ $? -ne 0 ]; then
+    echo "❌ Biome check failed. Please fix the issues and try again."
+    echo "💡 Run: npx biome check --write"
+    exit 1
+fi
+
+echo "✅ Biome check passed!"
+exit 0

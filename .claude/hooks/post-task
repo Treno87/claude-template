@@ -1,0 +1,26 @@
+#!/bin/bash
+# Post-task hook: Voice notification when task completes
+
+MESSAGE="작업 완료"
+
+# macOS
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    say "$MESSAGE"
+    exit 0
+fi
+
+# Linux with espeak
+if command -v espeak &> /dev/null; then
+    espeak "$MESSAGE"
+    exit 0
+fi
+
+# WSL with Windows PowerShell
+if command -v powershell.exe &> /dev/null; then
+    powershell.exe -Command "Add-Type -AssemblyName System.Speech; (New-Object System.Speech.Synthesis.SpeechSynthesizer).Speak('$MESSAGE')"
+    exit 0
+fi
+
+# Fallback: simple beep
+echo -e "\a"
+echo "✅ $MESSAGE"

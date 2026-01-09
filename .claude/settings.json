@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(*)",
+      "Write(./*)",
+      "Bash(npm:*)",
+      "Bash(pnpm:*)",
+      "Bash(bun:*)",
+      "Bash(git:*)",
+      "Bash(biome:*)",
+      "Bash(vitest:*)",
+      "Bash(jest:*)"
+    ],
+    "deny": [
+      "Write(~/*)",
+      "Bash(rm -rf *)"
+    ]
+  }
+}
